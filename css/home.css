@@ -1,0 +1,21 @@
+
+body {
+	background: url("../images/background.jpg");
+	background-size: cover;
+	background-position: left;
+	color: white;
+	font-family: "Source Sans Pro";
+	height: 100%;
+    padding-top: 50px;
+}
+
+hr {
+	max-width: 300px;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+}
+
+.container {
+    position: absolute;
+}
