@@ -162,17 +162,25 @@ h4 {
     margin-bottom: 25px;
 }
 
+.addTopGap-15 {
+    margin-top: 15px;
+}
+
+
 /* Photo album */
 .thumbnail {
+    padding: 0px;
+    border: 1px solid #DEDEDE;
+    border-radius: 0px;
     background: gray;
-    width: 100%;
-    padding-top: 100%;
+}
+
+.thumbnail img {
 }
 
 .photoContainer {
     max-width: 800px;
     margin: 0 auto;
-        
 }
 
 .sectionHr {
@@ -181,4 +189,8 @@ h4 {
     max-width: 500px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nameHeader {
+    margin: 0px;
 }

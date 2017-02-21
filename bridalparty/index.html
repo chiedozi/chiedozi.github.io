@@ -21,6 +21,11 @@
     </div>
 </div>
     
+    
+<div class="container addTopGap-15">
+    <div id="bios_placeholder"></div>
+</div>
+    
 <!-- JQuery and bootstrap -->
 <script src="http://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -28,9 +33,13 @@
 <!-- Load navbar into placeholder div -->
 <script>
 $(function(){
-    $("#nav_placeholder").load("../shared/navbar.html", function() {
+    $("#nav_placeholder").load("/shared/navbar.html", function() {
         var navItem = document.getElementById("bridal_nav_item");
         navItem.classList.add("active"); 
+    });
+    
+    $("#bios_placeholder").load("/bridalparty/bios.html", function() {
+        
     });
 });
 </script>
