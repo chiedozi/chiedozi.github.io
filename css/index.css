@@ -194,3 +194,8 @@ h4 {
 .nameHeader {
     margin: 0px;
 }
+
+
+label {
+    margin-top: 15px;
+}
