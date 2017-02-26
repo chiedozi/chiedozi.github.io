@@ -91,10 +91,14 @@ h4 {
     margin: 0;
     position: relative;
     display: inline-block;
-    opacity: .58;
+    opacity: .68;
 }
 
 /* Action Button */
+.buttonRow {
+    text-align: center;
+}
+
 .bigButton {
     padding: 21px 34px;
     font-size: 15px;
