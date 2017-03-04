@@ -13,75 +13,117 @@
 </head>
 <body>
     
-<div id="nav_placeholder"></div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation_options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Chiedo & Butsina</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navigation_options">
+      <ul class="nav navbar-nav navbar-right">
+        <li id="home_nav_item"><a href="/index2.html">Our Story</a></li>
+        <li id="location_nav_item"><a href="/location/">The Wedding</a></li>
+        <li id="bridal_nav_item"><a href="/bridalparty/">Bridal Party</a></li>
+        <li id="travel_nav_item"><a href="/travel/">Travel</a></li>
+        <li class="active" id="rsvp_nav_item"><a href="/rsvp/">RSVP</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
     
 <div class="imageHeader">
-    <img class="imageHeaderImage" src="/images/rsvp.jpg"/>
+    <img class="imageHeaderImage" src="/images/background2.jpg"/>
     <div class="imageHeaderTextContainer">
-        <h1 class="imageHeaderTitle">RSVP</h1>
+        <h1 class="imageHeaderTitle">Rsvp</h1>
         <p class="imageHeaderSubText">Please RSVP by May 1st, 2017</p>
     </div>
 </div>
 
-<div class="container">
-    <form>
-        <div class="form-group">
-            <label class="control-label col-xs-12" for="firstNameInput">Name</label>
-            <div class="col-xs-6 firstNameHolder">
-                <input type="text" class="form-control" id="firstNameInput" placeholder="First Name"/>
-            </div>
-            <div class="col-xs-6 lastNameHolder">
-                <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name"/>
-            </div>
+<div class="formContainer">
+    <div id="formView" class="fadeOpacity">
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label class="control-label col-xs-12" for="firstNameInput">Name</label>
+                    <div class="col-xs-6 firstNameHolder">
+                        <input type="text" class="form-control" id="firstNameInput" placeholder="First Name"/>
+                    </div>
+                    <div class="col-xs-6 lastNameHolder">
+                        <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-12" for="emailInput">Email</label>
+                    <div class="col-xs-12">
+                        <input type="email" class="form-control" id="emailInput" placeholder="Email"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-12" for="numGuestPicker">Number of Additional Guests</label>
+                    <div class="col-sm-2 col-xs-4">
+                        <select id="numGuestPicker" class="form-control">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-12" for="messageText">Message</label>
+                    <div class="col-xs-12">
+                        <textarea id="messageInput" rows="3" class="form-control" placeholder="Message"></textarea>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label class="control-label col-xs-12" for="emailInput">Email</label>
-            <div class="col-xs-12">
-                <input type="email" class="form-control" id="emailInput" placeholder="Email"/>
-            </div>
+
+        <div class="buttonRow" >
+            <button id="submitButton" class="btn btn-primary bigButton" type="button" data-loading-text="Sending RSVP...">Submit RSVP</button>
         </div>
-        <div class="form-group">
-            <label class="control-label col-xs-12" for="numGuestPicker">Number of Additional Guests</label>
-            <div class="col-sm-2 col-xs-4">
-                <select class="form-control" id="numGuestPicker">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-12" for="messageText">Message</label>
-            <div class="col-xs-12">
-                <textarea rows="3" class="form-control" placeholder="Message" id="messageText"></textarea>
-            </div>
-        </div>
-    </form>
+    </div>
+
+    <div id="rsvpSuccessView" class="fadeOpacity">
+        <h2>Thank you for rsvping!  We will see you in August!</h2>
+    </div>
 </div>
     
-<div class="buttonRow">
-    <a href="#"><button class="bigButton">Submit RSVP</button></a>
-</div>
+<!-- firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-database.js"></script>  
+    
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCAU9PSrc46aH6G_c0_7uyNlJgjNo-b-iw",
+    databaseURL: "https://wedding-site-e4c4d.firebaseio.com",
+    messagingSenderId: "778848748418"
+  };
+  firebase.initializeApp(config);
+</script>
     
 <!-- JQuery and bootstrap -->
 <script src="http://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<!-- Load navbar into placeholder div -->
-<script>
-$(function(){
-    $("#nav_placeholder").load("/shared/navbar.html", function() {
-        var navItem = document.getElementById("rsvp_nav_item");
-        navItem.classList.add("active"); 
-    });
-});
-</script>
-
+<!-- RSVP Logic -->
+<script src="/js/rsvp-database.js"></script>
+    
+<!-- image preload -->
+<script src="/js/preload.js"></script>
+    
 </body>
 </html>

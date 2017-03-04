@@ -12,10 +12,34 @@
 </head>
 <body>
     
-<div id="nav_placeholder"></div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation_options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Chiedo & Butsina</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navigation_options">
+      <ul class="nav navbar-nav navbar-right">
+        <li id="home_nav_item"><a href="/index2.html">Our Story</a></li>
+        <li class="active" id="location_nav_item"><a href="/location/">The Wedding</a></li>
+        <li id="bridal_nav_item"><a href="/bridalparty/">Bridal Party</a></li>
+        <li id="travel_nav_item"><a href="/travel/">Travel</a></li>
+        <li id="rsvp_nav_item"><a href="/rsvp/">RSVP</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
     
 <div class="imageHeader">
-    <img class="imageHeaderImage" src="/images/palm_event_center.jpg"/>
+    <img class="imageHeaderImage" src="/images/background3.jpg"/>
     <div class="imageHeaderTextContainer">
         <h1 class="imageHeaderTitle">The Wedding</h1>
     </div>
@@ -49,16 +73,9 @@
 <!-- JQuery and bootstrap -->
 <script src="http://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-<!-- Load navbar into placeholder div -->
-<script>
-$(function(){
-    $("#nav_placeholder").load("../shared/navbar.html", function() {
-        var navItem = document.getElementById("location_nav_item");
-        navItem.classList.add("active"); 
-    });
-});
-</script>
+    
+<!-- image preload -->
+<script src="/js/preload.js"></script>
 
 </body>
 </html>

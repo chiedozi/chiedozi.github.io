@@ -11,15 +11,45 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="css/blueimp-gallery.min.css">
     
+    <style>
+        .imageHeaderTextContainer {
+            top: 60%;
+        }
+    </style>
+         
 	<title>Chiedo and Butsina</title>
 </head>
 <body>
     
-<div id="nav_placeholder"></div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation_options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Chiedo & Butsina</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navigation_options">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active" id="home_nav_item"><a href="/index2.html">Our Story</a></li>
+        <li id="location_nav_item"><a href="/location/">The Wedding</a></li>
+        <li id="bridal_nav_item"><a href="/bridalparty/">Bridal Party</a></li>
+        <li id="travel_nav_item"><a href="/travel/">Travel</a></li>
+        <li id="rsvp_nav_item"><a href="/rsvp/">RSVP</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
     
 <div class="container">
     <div class="row imageHeader">
-        <img class="imageHeaderImage" src="/images/background.jpg"/>
+        <img class="imageHeaderImage" src="/images/background1.jpg"/>
         <div class="imageHeaderTextContainer">
             <h1 class="imageHeaderTitle">Chiedo & Butsina</h1>
             <h4>August 18th, 2017 • Pleasanton, CA</h4>
@@ -92,33 +122,45 @@
     <div class="row">
         <div id="links2" class="photoContainer">
             <div class="col-sm-2 col-xs-4">
-                <a href="/images/palm_event_center.jpg" class="thumbnail">
-                    <img src="/images/palm_event_center.jpg"/>
+                <a href="/images/img2.jpg" class="thumbnail">
+                    <div class="imageCrop">
+                        <img class="photo" src="/images/img2.jpg"/>
+                    </div>
                 </a>
             </div>
             <div class="col-sm-2 col-xs-4">
-                <a href="/images/palm_event_center.jpg" class="thumbnail">
-                    <img src="/images/palm_event_center.jpg"/>
+                <a href="/images/img3.jpg" class="thumbnail">
+                    <div class="imageCrop">
+                        <img class="photo" src="/images/img3.jpg"/>
+                    </div>
                 </a>
             </div>
             <div class="col-sm-2 col-xs-4">
-                <a href="/images/palm_event_center.jpg" class="thumbnail">
-                    <img src="/images/palm_event_center.jpg"/>
+                <a href="/images/img2.jpg" class="thumbnail">
+                    <div class="imageCrop">
+                        <img class="photo" src="/images/img2.jpg"/>
+                    </div>
                 </a>
             </div>
             <div class="col-sm-2 col-xs-4">
-                <a href="/images/palm_event_center.jpg" class="thumbnail">
-                    <img src="/images/palm_event_center.jpg"/>
+                <a href="/images/img3.jpg" class="thumbnail">
+                    <div class="imageCrop">
+                        <img class="photo" src="/images/img3.jpg"/>
+                    </div>
                 </a>
             </div>
             <div class="col-sm-2 col-xs-4">
-                <a href="/images/palm_event_center.jpg" class="thumbnail">
-                    <img src="/images/palm_event_center.jpg"/>
+                <a href="/images/img2.jpg" class="thumbnail">
+                    <div class="imageCrop">
+                        <img class="photo" src="/images/img2.jpg"/>
+                    </div>
                 </a>
             </div>
             <div class="col-sm-2 col-xs-4">
-                <a href="/images/palm_event_center.jpg" class="thumbnail">
-                    <img src="/images/palm_event_center.jpg"/>
+                <a href="/images/img3.jpg" class="thumbnail">
+                    <div class="imageCrop">
+                        <img class="photo" src="/images/img3.jpg"/>
+                    </div>
                 </a>
             </div>
         </div>
@@ -284,15 +326,8 @@ document.getElementById('links2').onclick = function (event) {
 };
 </script>
     
-<!-- Load navbar into placeholder div -->
-<script>
-$(function(){
-    $("#nav_placeholder").load("/shared/navbar.html", function() {
-        var navItem = document.getElementById("home_nav_item");
-        navItem.classList.add("active"); 
-    });
-});
-</script>
+<!-- image preload -->
+<script src="/js/preload.js"></script>
     
 </body>
 </html>
