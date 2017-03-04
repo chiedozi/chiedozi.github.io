@@ -7,9 +7,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-    
+    <link rel="stylesheet" href="/swiper/css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" href="css/blueimp-gallery.min.css">
     
     <style>
         .imageHeaderTextContainer {
@@ -66,44 +65,44 @@
     <div class="row">
         <div id="links" class="photoContainer">
             <div class="col-sm-2 col-xs-4">
-                <a href="/images/img2.jpg" class="thumbnail">
+                <a class="thumbnail">
+                    <div class="imageCrop">
+                        <img class="photo" src="/images/img1.jpg"/>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-2 col-xs-4">
+                <a class="thumbnail">
                     <div class="imageCrop">
                         <img class="photo" src="/images/img2.jpg"/>
                     </div>
                 </a>
             </div>
             <div class="col-sm-2 col-xs-4">
-                <a href="/images/img3.jpg" class="thumbnail">
+                <a class="thumbnail">
                     <div class="imageCrop">
-                        <img class="photo" src="/images/img3.jpg"/>
+                        <img class="photo" src="/images/background.jpg"/>
                     </div>
                 </a>
             </div>
             <div class="col-sm-2 col-xs-4">
-                <a href="/images/img2.jpg" class="thumbnail">
+                <a class="thumbnail">
                     <div class="imageCrop">
-                        <img class="photo" src="/images/img2.jpg"/>
+                        <img class="photo" src="/images/background1.jpg"/>
                     </div>
                 </a>
             </div>
             <div class="col-sm-2 col-xs-4">
-                <a href="/images/img3.jpg" class="thumbnail">
+                <a class="thumbnail">
                     <div class="imageCrop">
-                        <img class="photo" src="/images/img3.jpg"/>
+                        <img class="photo" src="/images/background2.jpg"/>
                     </div>
                 </a>
             </div>
             <div class="col-sm-2 col-xs-4">
-                <a href="/images/img2.jpg" class="thumbnail">
+                <a class="thumbnail">
                     <div class="imageCrop">
-                        <img class="photo" src="/images/img2.jpg"/>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-2 col-xs-4">
-                <a href="/images/img3.jpg" class="thumbnail">
-                    <div class="imageCrop">
-                        <img class="photo" src="/images/img3.jpg"/>
+                        <img class="photo" src="/images/background3.jpg"/>
                     </div>
                 </a>
             </div>
@@ -257,77 +256,81 @@
     
 <!--
 <div class="imageGallery">
-    <div class="overlayBackground"></div>
-    <div class="galleryContainer">
-        <img class="galleryImage" src="/images/palm_event_center.jpg"/>
+    <div class="galleryBackground"></div>
+    <div class="galleryContent">
+        <div><img class="galleryImage" src="/images/img1.jpg"/></div>
+        <div><img class="galleryImage" src="/images/img2.jpg"/></div>
     </div>
 </div>
 -->
     
-<!-- Blueimp img controls -->
-<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
-    <div class="slides"></div>
-    <h3 class="title"></h3>
-    <a class="prev">‹</a>
-    <a class="next">›</a>
-    <a class="close">×</a>
-    <a class="play-pause"></a>
-    <ol class="indicator"></ol>
-</div>
+<div id="gallery" class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <!-- Span is a hack to get vertical alignment to work... -->
+        <div class="swiper-slide"><span class="gallery-helper"></span><img class="gallery-img" src="/images/img1.jpg"/></div>
+        <div class="swiper-slide"><span class="gallery-helper"></span><img class="gallery-img" src="/images/img2.jpg"/></div>
+        <div class="swiper-slide"><span class="gallery-helper"></span><img class="gallery-img" src="/images/background1.jpg"/></div>
+        <div class="swiper-slide"><span class="gallery-helper"></span><img class="gallery-img" src="/images/background2.jpg"/></div>
+        <div class="swiper-slide"><span class="gallery-helper"></span><img class="gallery-img" src="/images/background3.jpg"/></div>
+        <div class="swiper-slide"><span class="gallery-helper"></span><img class="gallery-img" src="/images/background4.jpg"/></div>
+    </div>
     
-<!--
-<div id="links">
-    <a href="/images/background.jpg" title="Banana">
-        <img src="/images/background.jpg" alt="Banana">
-    </a>
-    <a href="/images/background.jpg" title="Apple">
-        <img src="/images/background.jpg" alt="Apple">
-    </a>
-    <a href="/images/background.jpg" title="Orange">
-        <img src="/images/background.jpg" alt="Orange">
-    </a>
-</div>
--->
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
     
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></div>
+    <div class="swiper-button-next"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div>
+    <div class="swiper-close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></div>
+</div>
+
 <!-- JQuery and bootstrap -->
 <script src="http://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="js/blueimp-gallery.min.js"></script>
     
-<script>
-document.getElementById('links').onclick = function (event) {
-    event = event || window.event;
-    var target = event.target || event.srcElement;
-    var link = target.src ? target.parentNode : target;
-    var links = this.getElementsByTagName('a');
-    
-    var clickedIndex = 0;
-    for (var i = 0; i < links.length; i++) {
-        var href = links[i];
-        console.log(href);
-        
-        if (href.getAttribute("href") === target.getAttribute("src")) {
-            clickedIndex = i;
-            break;
-        }
-    }
-    
-    var options = {index: clickedIndex, event: event};
-    blueimp.Gallery(links, options);
-};
-    
-document.getElementById('links2').onclick = function (event) {
-    event = event || window.event;
-    var target = event.target || event.srcElement,
-        link = target.src ? target.parentNode : target,
-        options = {index: link, event: event},
-        links = this.getElementsByTagName('a');
-    blueimp.Gallery(links, options);
-};
-</script>
+<script type="text/javascript" src="/swiper/js/swiper.jquery.min.js"></script>
     
 <!-- image preload -->
 <script src="/js/preload.js"></script>
+
+<!-- slider -->
+<script>
+    var mImageGallery = null;
+    
+$(document).ready(function() {
+    mImageGallery = new Swiper ('.swiper-container', {
+        initialSlide: 0,
+        grabCursor: true,
+        pagination: '.swiper-pagination',
+        paginationType: 'fraction',
+        paginationClickable: true,
+        prevButton: '.swiper-button-prev',
+        nextButton: '.swiper-button-next',
+        loop: true
+    });
+
+    $(".swiper-close").click(function() {
+        $("#gallery").css("visibility", "hidden");
+    })
+    
+    var thumbnails = document.getElementsByClassName("thumbnail");
+    for (var i = 0; i < thumbnails.length; i++) {
+        var item = thumbnails[i];
+        (function(index) {
+            // For some reason, swiper.slideTo isn't zero indexed
+            var slidePosition = index + 1;
+            item.addEventListener("click", function() {
+                $("#gallery").css("visibility", "visible");
+                mImageGallery.update(true);
+                mImageGallery.slideTo(slidePosition, 0, true);
+            }); 
+        })(i);
+    }
+});  
+
+</script>
     
 </body>
 </html>
