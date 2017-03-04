@@ -283,7 +283,7 @@
     <!-- If we need navigation buttons -->
     <div class="swiper-button-prev"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></div>
     <div class="swiper-button-next"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div>
-    <div class="swiper-close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></div>
+    <div class="swiper-close"><span id="gallery-close" class="glyphicon glyphicon-remove" aria-hidden="true"></div>
 </div>
 
 <!-- JQuery and bootstrap -->
@@ -299,37 +299,57 @@
 <script>
     var mImageGallery = null;
     
-$(document).ready(function() {
-    mImageGallery = new Swiper ('.swiper-container', {
-        initialSlide: 0,
-        grabCursor: true,
-        pagination: '.swiper-pagination',
-        paginationType: 'fraction',
-        paginationClickable: true,
-        prevButton: '.swiper-button-prev',
-        nextButton: '.swiper-button-next',
-        loop: true
-    });
+    $(document).ready(function() {
+        mImageGallery = new Swiper ('.swiper-container', {
+            initialSlide: 0,
+            grabCursor: true,
+            pagination: '.swiper-pagination',
+            paginationType: 'fraction',
+            paginationClickable: true,
+            prevButton: '.swiper-button-prev',
+            nextButton: '.swiper-button-next',
+            loop: true
+        });
 
-    $(".swiper-close").click(function() {
-        $("#gallery").css("visibility", "hidden");
-    })
-    
-    var thumbnails = document.getElementsByClassName("thumbnail");
-    for (var i = 0; i < thumbnails.length; i++) {
-        var item = thumbnails[i];
-        (function(index) {
-            // For some reason, swiper.slideTo isn't zero indexed
-            var slidePosition = index + 1;
-            item.addEventListener("click", function() {
-                $("#gallery").css("visibility", "visible");
-                mImageGallery.update(true);
-                mImageGallery.slideTo(slidePosition, 0, true);
-            }); 
-        })(i);
+        $(".swiper-close").click(function() {
+            $("#gallery").css("visibility", "hidden");
+            enableMouseWheel();
+        })
+
+        var thumbnails = document.getElementsByClassName("thumbnail");
+        for (var i = 0; i < thumbnails.length; i++) {
+            var item = thumbnails[i];
+            (function(index) {
+                // For some reason, swiper.slideTo isn't zero indexed
+                var slidePosition = index + 1;
+                item.addEventListener("click", function() {
+                    $("#gallery").css("visibility", "visible");
+                    mImageGallery.update(true);
+                    mImageGallery.slideTo(slidePosition, 0, true);
+                    disableMouseWheel();
+                }); 
+            })(i);
+        }
+    });  
+
+    function disableMouseWheel() {
+        $("body").bind("mousewheel touchstart", stopScrolling);
     }
-});  
-
+    
+    function enableMouseWheel() {
+        $("body").unbind("mousewheel touchstart", stopScrolling);
+    }
+    
+    function stopScrolling (e) {
+        // On mobile, allow touch events on close button
+        if (e.target.id === "gallery-close") {
+            return true;
+        }
+        
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    }
 </script>
     
 </body>
