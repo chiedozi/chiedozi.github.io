@@ -21,9 +21,30 @@
     position: relative;
 }
 
+.control-label {
+    font-weight: 500;
+}
+
 #rsvpSuccessView {
     text-align: center;
     position: absolute;
     top: 25%;
     transform: translate(0, -50%);
+}
+
+#guestInputsContainer {
+/*    padding-left: 30px;*/
+}
+
+.radio-inline+.radio-inline {
+    margin-top: 15px;
+}
+
+.radioButtonGroup {
+    padding-left: 15px;
+}
+
+.has-error .form-control {
+    color: #FF0000;
+    border-width: 3px;
 }
