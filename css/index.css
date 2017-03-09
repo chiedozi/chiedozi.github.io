@@ -61,6 +61,14 @@ h4 {
   background-color: transparent;
 }
 
+/* Prevents zoom on ios */
+input[type="text"], 
+input[type="email"],
+#numGuestPicker,
+#messageInput {
+    font-size: 16px;
+}
+
 /* Adjust font size for mobile devices */
 @media (max-width: 767px) and (orientation: portrait) {
 	.imageHeader {
