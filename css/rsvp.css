@@ -7,14 +7,25 @@
 }
 
 .fadeOpacity {
-    transition: opacity 0.5s linear;
-    transition-delay: 0.5s;
+    transition: opacity 0.25s linear;
+    transition-delay: 0.25s;
     
-    -moz-transition: opacity 0.5s linear;
-    -moz-transition-delay: 0.5s;
+    -moz-transition: opacity 0.25s linear;
+    -moz-transition-delay: 0.25s;
     
-    -webkit-transition: opacity 0.5s linear;
-    -webkit-transition-delay: 0.5s;
+    -webkit-transition: opacity 0.25s linear;
+    -webkit-transition-delay: 0.25s;
+}
+
+.fadeOpacityFast {
+    transition: opacity 0.15s linear;
+    transition-delay: 0.15s;
+    
+    -moz-transition: opacity 0.15s linear;
+    -moz-transition-delay: 0.15s;
+    
+    -webkit-transition: opacity 0.15s linear;
+    -webkit-transition-delay: 0.15s;
 }
 
 .formContainer {
@@ -28,12 +39,19 @@
 #rsvpSuccessView {
     text-align: center;
     position: absolute;
-    top: 25%;
-    transform: translate(0, -50%);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
 }
 
-#guestInputsContainer {
-/*    padding-left: 30px;*/
+#rsvpText {
+    max-width: 500px;
+    margin: auto;
+    padding: 40px;
+    padding-top: 30%;
+    transform: translate(0, -50%);
+    font-size: 18px;
 }
 
 .radio-inline+.radio-inline {
@@ -46,5 +64,37 @@
 
 .has-error .form-control {
     color: #FF0000;
-    border-width: 3px;
+    border-width: 2px;
+    border-color: #FF0000;
+}
+
+.bigButton {
+    margin-top: 10px;
+}
+
+.errorLabel {
+    margin-top: 10px;
+    color: #FF0000;
+    text-align: center;
+    opacity: 0;
+}
+
+.optional {
+    color: gray;
+    font-style: italic;
+}
+
+.has-error .radio-inline {
+    color: #FF0000;
+}
+
+.has-error .form-control:focus {
+    border-color: #FF0000;
+}
+
+.contextualLabel {
+    font-size: 12px;
+    font-style: italic;
+    color: #272727;
+    margin-top: 0px;
 }

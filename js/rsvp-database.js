@@ -5,49 +5,65 @@ function onSubmitButtonClicked() {
         return;
     }
     
-    var firstName = firstNameInput.value;
-    var lastName = lastNameInput.value;
-    var email = emailInput.value;
-    var message = messageInput.value;
-    var numGuests = numGuestPicker.value;
-    
-    submitRsvp(firstName, lastName, email, message, numGuests);
+    submitRsvp();
 }
 
-function submitRsvp(firstName, lastName, email, message, numGuests) {
+function submitRsvp() {
     // Disable inputs
     $(submitButton).button('loading');
     
     // A post entry.
-    var postData = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        message: message,
-        numGuests: numGuests
-    };
+    var postData = generatePostData();
     
     // Assuming first/last name combo is unique are unique
-    var userId = firstName + "_" + lastName;
+    var userId = (postData.firstName + "_" + postData.lastName).toLowerCase();
 
     // Write the new post's data simultaneously in the posts list and the user's post list.
-    var updates = {};
-    updates['/rsvps/' + userId] = postData;
-
-    console.log("chiedo: userId=" + userId);
-    return firebase.database().ref().update(updates, function(error) {
+    return firebase.database().ref('/rsvps/' + userId).set(postData, function(error) {
         if (error == null) {
-            onRSVPSuccess();
+            onRSVPSuccess(postData);
         } else {
             onRSVPFailed();
         }
     });
 }
 
-function onRSVPSuccess() {
+function generatePostData() {
+    var firstName = firstNameInput.value;
+    var lastName = lastNameInput.value;
+    var message = messageInput.value;
+    var email = null;
+    var numGuests = 0;
+    var guestNames = null;
+    
+    var postData = {
+        firstName: firstName,
+        lastName: lastName,
+        message: message,
+        isAttending: isAttendingSelected(),
+    };
+    
+    if (isAttendingSelected()) {
+        postData.numGuests = numGuestPicker.value;
+        postData.guests = getGuestNames();
+        postData.email = emailInput.value;
+    }
+    
+    return postData;
+}
+
+function onRSVPSuccess(data) {
+    if (data.isAttending == true) {
+        rsvpText.textContent = "Thank you for rsvping!  We will see you in August!";
+    } else {
+        rsvpText.textContent = "We're sorry we won't see you this summer.  Thanks for letting us know."
+    }
+    
     formView.style.opacity = 0;
+    rsvpSuccessView.style.display = "block";
     rsvpSuccessView.style.visibility = "visible";
     rsvpSuccessView.style.opacity = 1.0;
+    $("#rsvpText").goTo();
 }
 
 function onRSVPFailed() {
@@ -70,8 +86,8 @@ function onGuestPickerChanged() {
         var lastName = null;
         
         if (i < guestNames.length) {
-            firstName = guestNames[i].first;
-            lastName = guestNames[i].last;
+            firstName = guestNames[i].firstName;
+            lastName = guestNames[i].lastName;
         }
         
         container.append($("<div id='guest" + guestNum + "Container' class='form-group'>").append(
@@ -114,7 +130,7 @@ function getGuestNames() {
             break;
         }
         
-        names.push({"first": firstNameInput.value, "last": lastNameInput.value})
+        names.push({"firstName": firstNameInput.value, "lastName": lastNameInput.value})
         i++;
     }
     
@@ -123,10 +139,9 @@ function getGuestNames() {
 
 function validateForm() {
     var isValid = true;
-
+    
     isValid = validateTextInput(firstNameInput) && isValid;
     isValid = validateTextInput(lastNameInput) && isValid;
-    isValid = validateEmailField(emailInput) && isValid;
     isValid = validateRadioButtons() && isValid;
     
     // Validate guests
@@ -140,6 +155,11 @@ function validateForm() {
         isValid = validateTextInput(guestLastNameInput) && isValid;
     }
     
+//    if (isAttendingSelected()) {
+//        isValid = validateEmailField(emailInput) && isValid;   
+//    }
+    
+    errorContainer.style.opacity = isValid == true ? 0 : 1;
     return isValid;
 }
 
@@ -178,8 +198,7 @@ function validateRadioButtons() {
 
 function onWillAttendStatusChanged() {
     var guestInfoContainer = document.getElementById('guestInfoContainer');
-    var result = $('input[name="attendRadioGroup"]:checked').val();
-    if (result == "yes") {
+    if (isAttendingSelected()) {
         $('#guestInfoContainer').css("display", "block");
     } else {
         $('#guestInfoContainer').css("display", "none");
@@ -188,6 +207,11 @@ function onWillAttendStatusChanged() {
     if (attendRadioGroup.classList.contains("has-error")) {     
         validateRadioButtons();      
     }
+}
+
+function isAttendingSelected() {
+    var result = $('input[name="attendRadioGroup"]:checked').val();
+    return result == "yes";
 }
 
 // Dom elements
@@ -200,10 +224,13 @@ var guestInputsContainer = document.getElementById('guestInputsContainer');
 var submitButton = document.getElementById('submitButton');
 var formView = document.getElementById('formView');
 var rsvpSuccessView = document.getElementById('rsvpSuccessView');
+var rsvpText = document.getElementById('rsvpText');
 
 var attendRadioGroup = document.getElementById('attendRadioContainer');
 var willAttendRadio = document.getElementById('willAttendRadio');
 var willNotAttendRadio = document.getElementById('willNotAttendRadio');
+var errorLabel = document.getElementById('errorLabel');
+var errorContainer = document.getElementById('errorContainer');
 
 // Setup listeners
 submitButton.addEventListener("click", onSubmitButtonClicked);
@@ -212,6 +239,17 @@ willAttendRadio.addEventListener("click", onWillAttendStatusChanged);
 willNotAttendRadio.addEventListener("click", onWillAttendStatusChanged);
 
 // Setup initial state
+rsvpSuccessView.style.block = "none";
 rsvpSuccessView.style.visibility = "hidden";
 rsvpSuccessView.style.opacity = 0;
 onWillAttendStatusChanged();
+
+// Scroll to plugin
+(function($) {
+    $.fn.goTo = function() {
+        $('html, body').animate({
+            scrollTop: $(this).offset().top + 'px'
+        }, 'fast');
+        return this; // for chaining...
+    }
+})(jQuery);

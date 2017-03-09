@@ -51,7 +51,7 @@
 <div class="formContainer">
     <div id="formView" class="fadeOpacity">
         <div class="container">
-            <form>
+            <form class="col-sm-offset-1 col-sm-10 col-xs-12 col-xs-offset-0">
                 <div class="form-group">
                     <label class="control-label col-xs-12" for="firstNameInput">Name</label>
                     <div class="col-xs-6 firstNameHolder">
@@ -59,12 +59,6 @@
                     </div>
                     <div class="col-xs-6 lastNameHolder">
                         <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-xs-12" for="emailInput">Email</label>
-                    <div class="col-xs-12">
-                        <input type="email" class="form-control" id="emailInput" placeholder="Email"/>
                     </div>
                 </div>
                 
@@ -78,7 +72,15 @@
                 </div>
                 
                 <div id="guestInfoContainer" class="form-group">
+                    <div class="form-group">
+                        <label class="control-label col-xs-12" for="emailInput">Email <span class="optional">(Optional)</span></label>
+                        <label class="control-label col-xs-12 contextualLabel" for="numGuestPicker">Providing your email will allow us to send you information and notifications about the wedding.</label>
+                        <div class="col-xs-12">
+                            <input type="email" class="form-control" id="emailInput" placeholder="Email"/>
+                        </div>
+                    </div>
                     <label class="control-label col-xs-12" for="numGuestPicker">Number of Additional Guests</label>
+                    <label class="control-label col-xs-12 contextualLabel" for="numGuestPicker">Please select no more than the number of guests that is printed on your invite.</label>
                     <div class="col-sm-2 col-xs-4">
                         <select id="numGuestPicker" class="form-control">
                             <option>0</option>
@@ -98,21 +100,26 @@
                 
                 
                 <div class="form-group">
-                    <label class="control-label col-xs-12" for="messageText">Message for the Couple</label>
+                    <label class="control-label col-xs-12" for="messageText">Message for the Couple <span class="optional">(Optional)</span></label>
                     <div class="col-xs-12">
                         <textarea id="messageInput" rows="3" class="form-control" placeholder="Message"></textarea>
                     </div>
                 </div>
             </form>
         </div>
-
+        
+        <div id="errorContainer" class="errorLabel fadeOpacityFast" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span id="errorLabel">Please fill out all the required elements highlighted in red.</span>
+        </div>
+        
         <div class="buttonRow" >
             <button id="submitButton" class="btn btn-primary bigButton" type="button" data-loading-text="Sending RSVP...">Submit RSVP</button>
         </div>
     </div>
 
-    <div id="rsvpSuccessView" class="fadeOpacity">
-        <h2>Thank you for rsvping!  We will see you in August!</h2>
+    <div id="rsvpSuccessView" class="fadeOpacity col-sm-10">
+        <h2 id="rsvpText">Thank you for rsvping!  We will see you in August!</h2>
     </div>
 </div>
     
