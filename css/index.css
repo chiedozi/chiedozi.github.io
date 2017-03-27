@@ -69,11 +69,24 @@ input[type="email"],
     font-size: 16px;
 }
 
+.bridal-row {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.bridal-row > row {
+    padding-bottom: 130px;
+}
 /* Adjust font size for mobile devices */
 @media (max-width: 767px) and (orientation: portrait) {
 	.imageHeader {
 		padding-top: 50px;
 	}
+
+    .bridal-row {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 }
 
 .container {
