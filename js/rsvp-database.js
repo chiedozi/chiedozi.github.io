@@ -16,7 +16,7 @@ function submitRsvp() {
     var postData = generatePostData();
     
     // Assuming first/last name combo is unique are unique
-    var userId = (postData.firstName + "_" + postData.lastName).toLowerCase();
+    var userId = (postData.firstName.replace(/\s+/g, "_") + "_" + postData.lastName.replace(/\s+/g, "_")).toLowerCase();
 
     // Write the new post's data simultaneously in the posts list and the user's post list.
     return firebase.database().ref('/rsvps/' + userId).set(postData, function(error) {

@@ -74,9 +74,6 @@ input[type="email"],
     padding-right: 100px;
 }
 
-.bridal-row > row {
-    padding-bottom: 130px;
-}
 /* Adjust font size for mobile devices */
 @media (max-width: 767px) and (orientation: portrait) {
 	.imageHeader {
