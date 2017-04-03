@@ -81,8 +81,8 @@ input[type="email"],
 	}
 
     .bridal-row {
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
 
@@ -219,22 +219,17 @@ input[type="email"],
 
 
 /* Photo album */
-.thumbnail {
+.thumbnailClickable {
     padding: 0px;
-    border: 1px solid #DEDEDE;
+    border: 2px solid #FFFFFF;
     border-radius: 0px;
-    background: gray;
     cursor: pointer;
 }
 
-.thumbnail img {
-/*
-    position: absolute;
-    height: 100%;
-    width: auto;
-    left: 50%;
-    top: 50%;
-*/
+.thumbnailNoBorder {
+    padding: 0px;
+    border: none;
+    background: none;
 }
 
 .photo {
