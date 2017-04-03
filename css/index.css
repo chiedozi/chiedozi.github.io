@@ -173,7 +173,6 @@ input[type="email"],
 }
 
 .mainContent div {
-    margin: 0 auto;
     font-size: 16px;
 }
 
@@ -198,7 +197,7 @@ input[type="email"],
 .mainContentText {
     margin: 0px auto;
     margin-bottom: 20px;
-    max-width: 600px;
+    max-width: 700px;
 }
 
 .contextualText {
@@ -242,6 +241,7 @@ input[type="email"],
     width: 100%;
     height: 0;
     padding-bottom: 100%;
+    background-size: cover;
     overflow: hidden;
     position: relative;
 }
