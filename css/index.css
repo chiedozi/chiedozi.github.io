@@ -80,6 +80,10 @@ input[type="email"],
 		padding-top: 50px;
 	}
 
+    .imageHeaderTitle {
+        margin-bottom: 0px;
+    }
+    
     .bridal-row {
         padding-left: 10px;
         padding-right: 10px;
