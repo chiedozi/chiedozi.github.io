@@ -49,6 +49,8 @@ function generatePostData() {
         postData.email = emailInput.value;
     }
     
+    postData.createdAt = Date.now();
+    
     return postData;
 }
 
