@@ -29,6 +29,8 @@ var images = [
     "/images/gallery/proposal/p08.jpg",
     "/images/gallery/proposal/p09.jpg",
     "/images/gallery/proposal/p10.jpg",
+    "/images/gallery/proposal/p11.jpg",
+    "/images/gallery/proposal/p12.jpg",
     "/images/gallery/engagement/e01.jpg",
     "/images/gallery/engagement/e02.jpg",
     "/images/gallery/engagement/e03.jpg",
