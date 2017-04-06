@@ -88,6 +88,10 @@ input[type="email"],
         padding-left: 10px;
         padding-right: 10px;
     }
+
+    .bridal-row p {
+        font-size: 16px;
+    }
 }
 
 .container {
