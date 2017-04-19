@@ -36,7 +36,9 @@ for userId in parsedJson:
 			rowString = '"%s","%s","%s","%s","%s","%s","%s"' % (guestInfo["firstName"], guestInfo["lastName"], "", isAttending, "", userId, "")
 			outputString += "\n" + rowString
 
+print outputString
+
 # Save output to file
 outputFile = open("rsvps.csv", "w")
-outputFile.write(outputString)
+outputFile.write(outputString.encode('utf8'))
 outputFile.close()
