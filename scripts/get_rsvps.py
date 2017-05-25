@@ -2,7 +2,7 @@ import urllib2
 import json
 
 # put header row
-outputString = "firstName,lastName,email,isAttending,numGuests,invitedBy,message"
+outputString = "firstName,lastName,email,isAttending,numGuests,invitedBy,message,dietRestrictions"
 
 f = urllib2.urlopen("https://wedding-site-e4c4d.firebaseio.com/rsvps.json?print=pretty")
 parsedJson = json.load(f)
@@ -16,6 +16,10 @@ for userId in parsedJson:
 	lastName = userInfo["lastName"]
 	isAttending = userInfo["isAttending"]
 	message = userInfo["message"]
+        
+	dietRestrictions = ""
+	if "dietRestrictions" in userInfo:
+		dietRestrictions = userInfo["dietRestrictions"]
 
 	email = ""
 	if "email" in userInfo:
@@ -27,13 +31,13 @@ for userId in parsedJson:
 		guestList = userInfo["guests"]
 		numGuests = len(guestList)
 
-	rowString = '"%s","%s","%s","%s","%s","%s","%s"' % (firstName, lastName, email, isAttending, numGuests, userId, message)
+	rowString = '"%s","%s","%s","%s","%s","%s","%s","%s"' % (firstName, lastName, email, isAttending, numGuests, userId, message, dietRestrictions)
 	outputString += "\n" + rowString
 
 	# Iterate over and print guests
 	if guestList is not None:
 		for guestInfo in guestList:
-			rowString = '"%s","%s","%s","%s","%s","%s","%s"' % (guestInfo["firstName"], guestInfo["lastName"], "", isAttending, "", userId, "")
+			rowString = '"%s","%s","%s","%s","%s","%s","%s","%s"' % (guestInfo["firstName"], guestInfo["lastName"], "", isAttending, "", userId, "", "")
 			outputString += "\n" + rowString
 
 print outputString

@@ -32,6 +32,7 @@ function generatePostData() {
     var firstName = firstNameInput.value;
     var lastName = lastNameInput.value;
     var message = messageInput.value;
+    var dietRestrictions = dietInput.value;
     var email = null;
     var numGuests = 0;
     var guestNames = null;
@@ -40,6 +41,7 @@ function generatePostData() {
         firstName: firstName,
         lastName: lastName,
         message: message,
+        dietRestrictions: dietRestrictions,
         isAttending: isAttendingSelected(),
     };
     
@@ -220,6 +222,7 @@ function isAttendingSelected() {
 var firstNameInput = document.getElementById('firstNameInput');
 var lastNameInput = document.getElementById('lastNameInput');
 var emailInput = document.getElementById('emailInput');
+var dietInput = document.getElementById('dietInput');
 var messageInput = document.getElementById('messageInput');
 var numGuestPicker = document.getElementById('numGuestPicker');
 var guestInputsContainer = document.getElementById('guestInputsContainer');
