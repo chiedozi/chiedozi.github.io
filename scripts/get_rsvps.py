@@ -31,6 +31,9 @@ for userId in parsedJson:
 		guestList = userInfo["guests"]
 		numGuests = len(guestList)
 
+	if isAttending:
+		numGuests += 1
+		
 	rowString = '"%s","%s","%s","%s","%s","%s","%s","%s"' % (firstName, lastName, email, isAttending, numGuests, userId, message, dietRestrictions)
 	outputString += "\n" + rowString
 
