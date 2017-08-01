@@ -33,6 +33,8 @@ for userId in parsedJson:
 
 	if isAttending:
 		numGuests += 1
+	else:
+		continue
 		
 	rowString = '"%s","%s","%s","%s","%s","%s","%s","%s"' % (firstName, lastName, isAttending, email, numGuests, userId, message, dietRestrictions)
 	outputString += "\n" + rowString
